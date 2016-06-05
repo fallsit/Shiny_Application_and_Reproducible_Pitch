@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Predict Children's Height</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Predict Children's Height">
+  <meta name="author" content="fallsit">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Predict Children's Height</h1>
+    <h2>Course Project- Shiny Application and Reproducible Pitch</h2>
+    <p>fallsit<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>About the Course Project</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><ui>
+<li>This course is part of the &quot;Data Science specialization&quot;</li>
+<li>It is the &quot;Developing data products&quot; presentation project</li>
+<li>The project include the shiny application and the presentation in Slidify or Rstudio Presenter</li>
+<ui/>
+</br>
+<ui>
+<li>We using the Galton&#39;s dataset as our dataset to build the child&#39;s height predict application with the linear regression analysis method </li>
+<li>You can find the application on this <a href="https://fallsit.shinyapps.io/Developing_Data_Products_Course_Project/">link</a>*</li>
+<li>For complete code please visit the<a href="https://github.com/fallsit/Shiny-Application-and-Reproducible-Pitch"> Github account</a></li>
+</ui></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Galton&#39;s Dataset</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><ui>
+<li>This application uses galton in UsingR library which is a tabulated data set used by Galton in 1885 to study the relationship between a parent’s height and their childrens.</li>
+<li>About the Galton&#39;s dataset:</li>
+<ui></p>
+
+<pre><code class="r">summary(galton)
+</code></pre>
+
+<pre><code>##      child           parent     
+##  Min.   :61.70   Min.   :64.00  
+##  1st Qu.:66.20   1st Qu.:67.50  
+##  Median :68.20   Median :68.50  
+##  Mean   :68.09   Mean   :68.31  
+##  3rd Qu.:70.20   3rd Qu.:69.50  
+##  Max.   :73.70   Max.   :73.00
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Linear Regression Model</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><ui>
+<li>We use <code>lm</code> function to build the linear regression model.
+<li>The Application can predict a child&#39;s height based on the average of height of father and mother.(which call midparent)</p>
+
+<pre><code class="r">fit&lt;-lm(child~parent,galton)
+coef(fit)
+</code></pre>
+
+<pre><code>## (Intercept)      parent 
+##  23.9415302   0.6462906
+</code></pre>
+
+<p><li>The model formula for prediction is:</li>
+\[child's height=parent*0.6462906+23.9415302\]
+</ui></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Visualization</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For save space we only focus on code without executing it. You can view the plot by using the application.There are five main layers consists of the plot : regression line, scattered plot, prediction line,  confidence band, prediction band .</p>
+
+<pre><code class="r">ggplot(galtonAndPred,aes(parent,child))+
+    xlab(&quot;Parents height&quot;)+
+    ylab(&quot;Children&#39;s predicted height&quot;)+
+    geom_point() +
+    geom_smooth(method=&quot;lm&quot;,...)+
+    .......
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='About the Course Project'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Galton&#39;s Dataset'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Linear Regression Model'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Visualization'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
